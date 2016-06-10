@@ -144,7 +144,7 @@ Licensed under the MIT License ~ http://threedubmedia.googlecode.com/files/MIT-L
             panTimeout = null;
 
         function onDragStart(e) {
-            if (e.which != 1)  // only accept left-click
+            if (e.which != 2)  // only accept middle-click
                 return false;
             var c = plot.getPlaceholder().css('cursor');
             if (c)
@@ -188,9 +188,9 @@ Licensed under the MIT License ~ http://threedubmedia.googlecode.com/files/MIT-L
             }
 
             if (o.pan.interactive) {
-                eventHolder.bind("dragstart", { distance: 10 }, onDragStart);
-                eventHolder.bind("drag", onDrag);
-                eventHolder.bind("dragend", onDragEnd);
+                eventHolder.bind("dragstart", { distance: 10, which:2}, onDragStart);
+                eventHolder.bind("drag",{which:2},onDrag);
+                eventHolder.bind("dragend",{which:2}, onDragEnd);
             }
         }
 
